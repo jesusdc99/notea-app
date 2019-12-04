@@ -1,9 +1,44 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Listado
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list #dynamiclist id="dynamiclist">
+    <ion-item-sliding *ngFor="let item of listadoPanel;let i = index">
+      <ion-item>
+        <ion-label>
+          <h2>{{item.title}}</h2>
+          <p>{{item.description}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="start">
+        <ion-item-option color="primary" (click)="editaNota(item.id)">
+          <ion-icon name="create" style="zoom:4.0"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end" (ionSwipe)="borraNota(item.id)">
+        <ion-item-option color="danger" expandable (click)="borraNota(item.id)">
+          <ion-icon name="remove-circle" style="zoom:4.0"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="irInicio()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
