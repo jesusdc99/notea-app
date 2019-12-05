@@ -41,7 +41,7 @@ export class TodoserviceService {
   readTODO2(timer: number = 10000,): Observable<note[]> {
     return new Observable((observer) => {
       // observer.next // Devolver valor
-      //observer.error() // Devolver error
+      // observer.error() // Devolver error
       // observer.complete() // Cortar ejecucion
       let subscription: Subscription;
       let tempo = setTimeout(() => {
