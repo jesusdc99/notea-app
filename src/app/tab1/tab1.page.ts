@@ -13,7 +13,10 @@ export class Tab1Page {
 
   public todoForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private todoS: TodoserviceService, private loadingController: LoadingController, private toastController: ToastController) { }
+  constructor(private fb: FormBuilder,
+    private todoS: TodoserviceService,
+    private loadingController: LoadingController,
+    private toastController: ToastController) { }
 
   ngOnInit() {
     this.todoForm = this.fb.group({
@@ -32,16 +35,16 @@ export class Tab1Page {
     this.presentLoading();
 
     this.todoS.addTODO(data)
-    .then((ok) => {
-      this.presentToast('Nota guardada', 'success');
-      this.todoForm.reset();
-    })
-    .catch((err) => {
-      this.presentToast('Error al guardar nota', 'danger', 4000);
-    })
-    .finally(() => {
-      this.loadingController.dismiss();
-    });
+      .then((ok) => {
+        this.presentToast('Nota guardada', 'success');
+        this.todoForm.reset();
+      })
+      .catch((err) => {
+        this.presentToast('Error al guardar nota', 'danger', 4000);
+      })
+      .finally(() => {
+        this.loadingController.dismiss();
+      });
   }
 
   async presentLoading() {

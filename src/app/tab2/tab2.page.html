@@ -6,6 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-header>
+  <ion-searchbar animated placeholder="Búsqueda" (ionChange)="buscar($event)"></ion-searchbar>
+</ion-header>
+
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
@@ -14,7 +18,7 @@
   </ion-refresher>
 
   <ion-list #dynamiclist id="dynamiclist">
-    <ion-item-sliding *ngFor="let item of listadoPanel;let i = index">
+    <ion-item-sliding *ngFor="let item of listadoPanel | filtro: textoBuscar">
       <ion-item>
         <ion-label>
           <h2>{{item.title}}</h2>

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class Tab2Page {
 
   public listadoPanel: any[];
+  public textoBuscar: string;
 
   constructor(private todoS: TodoserviceService,
     private loadingController: LoadingController,
@@ -147,13 +148,13 @@ export class Tab2Page {
         {
           name: 'titulo',
           type: 'text',
-          value: nota.title, // TODO valor de la nota
+          value: nota.title,
           placeholder: 'Título'
         },
         {
           name: 'descripcion',
           type: 'text',
-          value: nota.description, // TODO valor de la nota
+          value: nota.description,
           placeholder: 'Descripción'
         },
       ],
@@ -169,21 +170,29 @@ export class Tab2Page {
           text: 'Guardar',
           handler: (alertData) => {
             console.log('Edicion confirmada');
-            // TODO guardar en firebase
             let editedNote: note;
             editedNote = {
               title: alertData.titulo,
               description: alertData.descripcion
             };
-            this.todoS.updateTODO(id, editedNote).then(() => {
-              this.refrescar();
-            });
+            this.todoS.updateTODO(id, editedNote)
+              .then(() => {
+                this.refrescar();
+                this.presentToast('Nota modificada correctamente', 'dark');
+              })
+              .catch(() => {
+                this.presentToast('Error al actualizar la nota', 'dark');
+              });
           }
         }
       ]
     });
 
     await alert.present();
+  }
+
+  buscar(event): void {
+    this.textoBuscar = event.detail.value;
   }
 
 }
