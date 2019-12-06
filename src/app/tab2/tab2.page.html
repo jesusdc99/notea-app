@@ -12,8 +12,8 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Arrastra para actualizar" refreshingSpinner="circles"
+      refreshingText="Actualizando...">
     </ion-refresher-content>
   </ion-refresher>
 
@@ -23,6 +23,7 @@
         <ion-label>
           <h2>{{item.title}}</h2>
           <p>{{item.description}}</p>
+          <p class="ion-text-end"><ion-icon name="pin"></ion-icon> {{item.location}}</p>
         </ion-label>
       </ion-item>
 

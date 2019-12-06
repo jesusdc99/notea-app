@@ -7,6 +7,14 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-row center>
+    <ion-col text-center>
+      <ion-button (click)="vibrate()" class="center">
+        <ion-icon name="flash"></ion-icon> Vibe check
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
   <form [formGroup]="todoForm" (ngSubmit)="addNote()">
     <ion-item>
       <ion-label>Title</ion-label>
@@ -16,6 +24,7 @@
       <ion-label>Description</ion-label>
       <ion-textarea formControlName="description"></ion-textarea>
     </ion-item>
-    <ion-button shape="round" color="primary" fill="solid" type="submit" [disabled]="!todoForm.valid">Agregar</ion-button>
+    <ion-button shape="round" color="primary" fill="solid" type="submit" [disabled]="!todoForm.valid">Agregar
+    </ion-button>
   </form>
 </ion-content>

@@ -134,9 +134,9 @@ export class Tab2Page {
 
   async presentToast(msg: string, col: string, dur: number = 2000, ): Promise<void> {
     const toast = await this.toastController.create({
-      message: msg,
+      message: '<ion-icon name="information-circle-outline"></ion-icon> '+msg,
       duration: dur,
-      color: col
+      color: col,
     });
     toast.present();
   }

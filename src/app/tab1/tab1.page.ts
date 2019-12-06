@@ -36,11 +36,11 @@ export class Tab1Page {
 
     this.todoS.addTODO(data)
       .then((ok) => {
-        this.presentToast('Nota guardada', 'success');
+        this.presentToast('Nota guardada', 'dark');
         this.todoForm.reset();
       })
       .catch((err) => {
-        this.presentToast('Error al guardar nota', 'danger', 4000);
+        this.presentToast('Error al guardar nota', 'dark', 4000);
       })
       .finally(() => {
         this.loadingController.dismiss();
@@ -56,11 +56,14 @@ export class Tab1Page {
 
   async presentToast(msg: string, col: string, dur: number = 2000, ) {
     const toast = await this.toastController.create({
-      message: msg,
+      message: '<ion-icon name="information-circle-outline"></ion-icon> '+msg,
       duration: dur,
       color: col
     });
     toast.present();
   }
 
+  vibrate(){
+    console.log('Vibrando...');
+  }
 }
