@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -27,7 +28,8 @@ import { Flashlight } from '@ionic-native/flashlight/ngx';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

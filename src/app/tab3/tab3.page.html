@@ -6,4 +6,40 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+  <ion-list class="ion-padding">
+    <ion-list-header>Selecciona una ubicación</ion-list-header>
+    <ion-item>
+      <ion-label>Ciudades</ion-label>
+      <ion-select (ionChange)="setLocation($event)">
+        <ion-select-option value="{{location.id}}" *ngFor="let location of locations">{{location.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="weather != undefined">
+    <ion-item>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>{{weather.name}}</ion-label>
+      <ion-img width="20px" height="20px" [src]="'https://openweathermap.org/img/wn/'+weather.weather[0].icon+'.png'">
+      </ion-img>
+    </ion-item>
+    <ion-card-content class="align-self-center">
+      Condición {{weather.weather[0].main}}
+      <br>
+      Descripción: {{weather.weather[0].description}}
+      <br>
+      Temperatura actual: <b>{{weather.main.temp}} ºC</b>
+      <ion-item class="ion-no-padding">
+        <span>Temperatura Mínima:</span>
+        <ion-badge slot="end" color="primary">{{weather.main.temp_min}} ºC</ion-badge>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <span>Temperatura Máxima:</span>
+        <ion-badge slot="end" color="danger">{{weather.main.temp_max}} ºC</ion-badge>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

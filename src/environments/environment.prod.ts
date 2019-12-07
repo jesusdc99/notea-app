@@ -9,5 +9,9 @@ export const environment = {
     messagingSenderId: "201939165867",
     appId: "1:201939165867:web:9d5f6ad311c61837098dee"
   },
-  collection: "todo"
+  collection: "todo",
+  weatherConfig: {
+    apiKey: '70dcc262c44ebb77af9b3125b25de986',
+    defaultLocation: 'Cordoba',
+  }
 };
