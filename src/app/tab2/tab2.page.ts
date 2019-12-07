@@ -191,8 +191,8 @@ export class Tab2Page {
     await alert.present();
   }
 
-  buscar(event): void {
-    this.textoBuscar = event.detail.value;
+  buscar($event): void {
+    this.textoBuscar = $event.detail.value;
   }
 
 }

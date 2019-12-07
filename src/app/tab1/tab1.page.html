@@ -7,14 +7,16 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-row center>
-    <ion-col text-end>
-      <ion-toggle color="primary" [checked]="flashToggled" (ionChange)="doFlashlight($event)"></ion-toggle>
-    </ion-col>
-    <ion-col align-self-center>
-      <span>Linterna</span>
-    </ion-col>
-  </ion-row>
+  <ion-grid>
+    <ion-row center>
+      <ion-col class="ion-text-end">
+        <ion-toggle color="primary" [checked]="flashToggled" (ionChange)="doFlashlight()"></ion-toggle>
+      </ion-col>
+      <ion-col class="align-self-center">
+        <span>Linterna</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <form [formGroup]="todoForm" (ngSubmit)="addNote()">
     <ion-item>
