@@ -8,10 +8,11 @@
 
 <ion-content class="ion-padding">
   <ion-row center>
-    <ion-col text-center>
-      <ion-button (click)="vibrate()" class="center">
-        <ion-icon name="flash"></ion-icon> Vibe check
-      </ion-button>
+    <ion-col text-end>
+      <ion-toggle color="primary" [checked]="flashToggled" (ionChange)="doFlashlight($event)"></ion-toggle>
+    </ion-col>
+    <ion-col align-self-center>
+      <span>Linterna</span>
     </ion-col>
   </ion-row>
 

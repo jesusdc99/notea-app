@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +32,8 @@ import { AngularFirestoreModule } from "angularfire2/firestore";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Flashlight
   ],
   bootstrap: [AppComponent]
 })
