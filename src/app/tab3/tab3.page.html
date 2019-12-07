@@ -11,7 +11,7 @@
   <ion-list class="ion-padding">
     <ion-list-header>Selecciona una ubicación</ion-list-header>
     <ion-item>
-      <ion-label>Ciudades</ion-label>
+      <ion-label>Elige una ciudad</ion-label>
       <ion-select (ionChange)="setLocation($event)">
         <ion-select-option value="{{location.id}}" *ngFor="let location of locations">{{location.name}}</ion-select-option>
       </ion-select>
