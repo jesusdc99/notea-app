@@ -9,9 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class WeatherserviceService {
 
-  public apiKey2: string = '&appid=70dcc262c44ebb77af9b3125b25de986';
-  public example2: string = 'api.openweathermap.org/data/2.5/weather?q=Cordoba&appid=70dcc262c44ebb77af9b3125b25de986';
-  //
   public url: string = 'https://api.openweathermap.org/data/2.5/weather';
   public apiKey: string = environment.weatherConfig.apiKey;
 
