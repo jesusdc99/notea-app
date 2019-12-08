@@ -1,3 +1,4 @@
+import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { WeatherserviceService } from './../services/weatherservice.service';
 import { Component } from '@angular/core';
 
@@ -50,7 +51,8 @@ export class Tab3Page {
   public weather: Object;
   private location_id: string;
 
-  constructor(private weatherS: WeatherserviceService) { }
+  constructor(private weatherS: WeatherserviceService,
+    public auth: AuthenticationserviceService) { }
 
   readWeather(): void {
     this.weatherS.getWeather(this.location_id)
@@ -61,7 +63,7 @@ export class Tab3Page {
   }
 
   setLocation($event): void {
-    console.log('cambio');
+    console.log('Ciudad seleccionada');
     console.log($event.target.value);
     this.location_id = $event.target.value;
     this.readWeather();

@@ -1,3 +1,4 @@
+import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { Subscription } from 'rxjs';
 import { note } from './../model/note';
 import { Component } from '@angular/core';
@@ -19,7 +20,8 @@ export class Tab2Page {
     private loadingController: LoadingController,
     private router: Router,
     private alertController: AlertController,
-    private toastController: ToastController) { }
+    private toastController: ToastController,
+    public auth: AuthenticationserviceService) { }
 
   ngOnInit() {
     this.refrescar();

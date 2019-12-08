@@ -1,3 +1,4 @@
+import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { note } from './../model/note';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -19,7 +20,8 @@ export class Tab1Page {
     private todoS: TodoserviceService,
     private loadingController: LoadingController,
     private toastController: ToastController,
-    private flashlight: Flashlight) { }
+    private flashlight: Flashlight,
+    public auth: AuthenticationserviceService) { }
 
   ngOnInit() {
     this.todoForm = this.fb.group({
