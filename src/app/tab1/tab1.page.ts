@@ -4,7 +4,7 @@ import { note } from './../model/note';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { TodoserviceService } from '../services/todoservice.service';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 @Component({
