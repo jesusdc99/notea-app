@@ -1,3 +1,4 @@
+import { ToastServiceService } from './../services/toast-service.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { note } from './../model/note';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,9 +20,9 @@ export class Tab1Page {
   constructor(private fb: FormBuilder,
     private todoS: TodoserviceService,
     private loadingController: LoadingController,
-    private toastController: ToastController,
     private flashlight: Flashlight,
-    public auth: AuthenticationserviceService) { }
+    public auth: AuthenticationserviceService,
+    private toastS: ToastServiceService) { }
 
   ngOnInit() {
     this.todoForm = this.fb.group({
@@ -42,11 +43,11 @@ export class Tab1Page {
 
     this.todoS.addTODO(data)
       .then((ok) => {
-        this.presentToast('Nota guardada', 'dark');
+        this.toastS.showOnceToast('Nota guardada');
         this.todoForm.reset();
       })
       .catch((err) => {
-        this.presentToast('Error al guardar nota', 'dark', 4000);
+        this.toastS.showOnceToast('Error al guardar nota');
       })
       .finally(() => {
         this.loadingController.dismiss();
@@ -58,15 +59,6 @@ export class Tab1Page {
       message: 'Guardando'
     });
     await loading.present();
-  }
-
-  async presentToast(msg: string, col: string, dur: number = 2000, ): Promise<void> {
-    const toast = await this.toastController.create({
-      message: '<ion-icon name="information-circle-outline"></ion-icon> ' + msg,
-      duration: dur,
-      color: col
-    });
-    toast.present();
   }
 
   doFlashlight(): void {

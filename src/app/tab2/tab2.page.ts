@@ -1,3 +1,4 @@
+import { ToastServiceService } from './../services/toast-service.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { Subscription } from 'rxjs';
 import { note } from './../model/note';
@@ -20,8 +21,8 @@ export class Tab2Page {
     private loadingController: LoadingController,
     private router: Router,
     private alertController: AlertController,
-    private toastController: ToastController,
-    public auth: AuthenticationserviceService) { }
+    public auth: AuthenticationserviceService,
+    private toastS: ToastServiceService) { }
 
   ngOnInit() {
     this.refrescar();
@@ -120,11 +121,11 @@ export class Tab2Page {
             this.todoS.deleteTODO(id)
               .then((salida) => {
                 this.refrescar();
-                this.presentToast('Nota eliminada', 'dark');
+                this.toastS.showOnceToast('Nota eliminada');
               })
               .catch((err) => {
                 console.log(err);
-                this.presentToast('Error al eliminar la nota', 'dark');
+                this.toastS.showOnceToast('Error al eliminar la nota');
               });
           }
         }
@@ -132,15 +133,6 @@ export class Tab2Page {
     });
 
     await alert.present();
-  }
-
-  async presentToast(msg: string, col: string, dur: number = 2000, ): Promise<void> {
-    const toast = await this.toastController.create({
-      message: '<ion-icon name="information-circle-outline"></ion-icon> '+msg,
-      duration: dur,
-      color: col,
-    });
-    toast.present();
   }
 
   async presentAlertPrompt(id: string, nota: note): Promise<void> {
@@ -180,10 +172,10 @@ export class Tab2Page {
             this.todoS.updateTODO(id, editedNote)
               .then(() => {
                 this.refrescar();
-                this.presentToast('Nota modificada correctamente', 'dark');
+                this.toastS.showOnceToast('Nota modificada correctamente');
               })
               .catch(() => {
-                this.presentToast('Error al actualizar la nota', 'dark');
+                this.toastS.showOnceToast('Error al actualizar la nota');
               });
           }
         }

@@ -1,3 +1,4 @@
+import { ToastServiceService } from './../../services/toast-service.service';
 import { Router } from '@angular/router';
 import { AuthenticationserviceService } from './../../services/authenticationservice.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ export class LoginPage implements OnInit {
 
   constructor(public auth: AuthenticationserviceService,
     private router: Router,
-    private toastController: ToastController) { }
+    private toastS: ToastServiceService) { }
 
   ngOnInit() {
   }
@@ -35,17 +36,8 @@ export class LoginPage implements OnInit {
   doLogin() {
     let success: boolean = this.auth.loginAttemp(this.user,this.pass);
     if(!success) {
-      this.presentToastLoginFailed();
+      this.toastS.showOnceToast('Credenciales incorrectos');
     }
-  }
-
-  async presentToastLoginFailed(): Promise<void> {
-    const toast = await this.toastController.create({
-      message: '<ion-icon name="information-circle-outline"></ion-icon> Credenciales incorrectos',
-      duration: 2000,
-      color: 'dark'
-    });
-    toast.present();
   }
 
 }
