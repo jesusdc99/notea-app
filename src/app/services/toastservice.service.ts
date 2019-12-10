@@ -1,3 +1,4 @@
+import { ToastController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ToastserviceService {
   
+  // https://stackoverflow.com/a/55125430/10387022
   public toastInstance: any;
 
   constructor(private toastController: ToastController) { }
