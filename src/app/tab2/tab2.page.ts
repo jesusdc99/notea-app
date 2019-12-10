@@ -62,7 +62,7 @@ export class Tab2Page {
     this.todoS.readTODOByID(id).subscribe((item) => {
       //console.log(item.data().title);
       //console.log(item.data().description);
-      console.log('dentro');
+      console.log('Editando nota');
       currentNote = {
         title: item.data().title,
         description: item.data().description
