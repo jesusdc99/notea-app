@@ -1,10 +1,11 @@
+import { LoadingserviceService } from './../services/loadingservice.service';
 import { ToastserviceService } from './../services/toastservice.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { Subscription } from 'rxjs';
 import { note } from './../model/note';
 import { Component } from '@angular/core';
 import { TodoserviceService } from '../services/todoservice.service';
-import { LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,11 +19,11 @@ export class Tab2Page {
   public textoBuscar: string;
 
   constructor(private todoS: TodoserviceService,
-    private loadingController: LoadingController,
     private router: Router,
     private alertController: AlertController,
     public auth: AuthenticationserviceService,
-    private toastS: ToastserviceService) { }
+    private toastS: ToastserviceService,
+    private loadingS: LoadingserviceService) { }
 
   ngOnInit() {
     this.refrescar();
@@ -33,7 +34,7 @@ export class Tab2Page {
   }
 
   private refrescar(): void {
-    this.presentLoading();
+    this.loadingS.show('Cargando...');
     this.listadoPanel = [];
     console.log("Cargando notas");
     let subscription: Subscription;
@@ -49,11 +50,11 @@ export class Tab2Page {
         clearTimeout(tempo);*/
       this.todoS.readTODO2().subscribe((lista) => {
         this.listadoPanel = lista;
-        this.loadingController.dismiss();
+        this.loadingS.close();
         console.log('Notas cargadas');
       });
     } catch (error) {
-      this.loadingController.dismiss();
+      this.loadingS.close();
     }
     console.log('Petición solicitada');
   }
@@ -78,14 +79,6 @@ export class Tab2Page {
 
   irInicio(): void {
     this.router.navigateByUrl('/tabs/tab1');
-  }
-
-  // TODO a servicio
-  async presentLoading(): Promise<void> {
-    const loading = await this.loadingController.create({
-      message: 'Cargando...',
-    });
-    await loading.present();
   }
 
   doRefresh(event): void {
