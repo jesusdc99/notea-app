@@ -1,4 +1,4 @@
-import { ToastServiceService } from './../services/toast-service.service';
+import { ToastserviceService } from './../services/toastservice.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { Subscription } from 'rxjs';
 import { note } from './../model/note';
@@ -22,7 +22,7 @@ export class Tab2Page {
     private router: Router,
     private alertController: AlertController,
     public auth: AuthenticationserviceService,
-    private toastS: ToastServiceService) { }
+    private toastS: ToastserviceService) { }
 
   ngOnInit() {
     this.refrescar();
@@ -80,6 +80,7 @@ export class Tab2Page {
     this.router.navigateByUrl('/tabs/tab1');
   }
 
+  // TODO a servicio
   async presentLoading(): Promise<void> {
     const loading = await this.loadingController.create({
       message: 'Cargando...',

@@ -1,4 +1,4 @@
-import { ToastServiceService } from './../../services/toast-service.service';
+import { ToastserviceService } from './../../services/toastservice.service';
 import { Router } from '@angular/router';
 import { AuthenticationserviceService } from './../../services/authenticationservice.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
 
   constructor(public auth: AuthenticationserviceService,
     private router: Router,
-    private toastS: ToastServiceService) { }
+    private toastS: ToastserviceService) { }
 
   ngOnInit() {
   }

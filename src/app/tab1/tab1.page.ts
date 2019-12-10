@@ -1,4 +1,4 @@
-import { ToastServiceService } from './../services/toast-service.service';
+import { ToastserviceService } from './../services/toastservice.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { note } from './../model/note';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +22,7 @@ export class Tab1Page {
     private loadingController: LoadingController,
     private flashlight: Flashlight,
     public auth: AuthenticationserviceService,
-    private toastS: ToastServiceService) { }
+    private toastS: ToastserviceService) { }
 
   ngOnInit() {
     this.todoForm = this.fb.group({
