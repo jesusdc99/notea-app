@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ToastServiceService {
-
+export class ToastserviceService {
+  
   public toastInstance: any;
 
   constructor(private toastController: ToastController) { }
@@ -31,5 +30,4 @@ export class ToastServiceService {
       obj.present();
     });
   }
-
 }
