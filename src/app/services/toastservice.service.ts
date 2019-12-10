@@ -12,7 +12,7 @@ export class ToastserviceService {
   constructor(private toastController: ToastController) { }
 
   // Call this method
-  showOnceToast(msg: string, color: string = 'dark', dur: number = 2000) {
+  showOnceToast(msg: string, color: string = 'dark', dur: number = 2000): void {
     this.toastController.dismiss()
       .then((obj) => { })
       .catch(() => { })
@@ -21,7 +21,7 @@ export class ToastserviceService {
       });
   }
 
-  private manageToast(msg: string, color: string, dur: number) {
+  private manageToast(msg: string, color: string, dur: number): void {
     this.toastInstance = this.toastController.create({
       message: '<ion-icon name="information-circle-outline"></ion-icon> ' + msg,
       color: color,
