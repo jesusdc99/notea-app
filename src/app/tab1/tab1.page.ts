@@ -1,3 +1,4 @@
+import { LoadingserviceService } from './../services/loadingservice.service';
 import { ToastserviceService } from './../services/toastservice.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { note } from './../model/note';
@@ -22,7 +23,8 @@ export class Tab1Page {
     private loadingController: LoadingController,
     private flashlight: Flashlight,
     public auth: AuthenticationserviceService,
-    private toastS: ToastserviceService) { }
+    private toastS: ToastserviceService,
+    private loadingS: LoadingserviceService) { }
 
   ngOnInit() {
     this.todoForm = this.fb.group({
@@ -32,6 +34,7 @@ export class Tab1Page {
     this.flashToggled = false;
   }
 
+  // Crear nota
   addNote(): void {
     let data: note;
     data = {
@@ -39,7 +42,7 @@ export class Tab1Page {
       description: this.todoForm.get('description').value
     };
 
-    this.presentLoading();
+    this.loadingS.show('Guardando...');
 
     this.todoS.addTODO(data)
       .then((ok) => {
@@ -50,17 +53,11 @@ export class Tab1Page {
         this.toastS.showOnceToast('Error al guardar nota');
       })
       .finally(() => {
-        this.loadingController.dismiss();
+        this.loadingS.close();
       });
   }
 
-  async presentLoading(): Promise<void> {
-    const loading = await this.loadingController.create({
-      message: 'Guardando'
-    });
-    await loading.present();
-  }
-
+  // Gestion del flash
   doFlashlight(): void {
     console.log('Flashlight...');
     this.flashToggled = !this.flashToggled;
