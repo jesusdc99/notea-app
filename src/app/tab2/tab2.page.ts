@@ -33,8 +33,9 @@ export class Tab2Page {
     //this.refrescar();
   }
 
-  private refrescar(): void {
-    this.loadingS.show('Cargando...');
+  // Refresco de la lista
+  private async refrescar() {
+    await this.loadingS.show('Cargando...');
     this.listadoPanel = [];
     console.log("Cargando notas");
     let subscription: Subscription;
@@ -59,6 +60,7 @@ export class Tab2Page {
     console.log('Petición solicitada');
   }
 
+  // Edicion de nota
   editaNota(id: string): void {
     let currentNote: note;
     this.todoS.readTODOByID(id).subscribe((item) => {
@@ -73,14 +75,17 @@ export class Tab2Page {
     });
   }
 
+  // Eliminacion de nota
   borraNota(id: string): void {
     this.presentAlertConfirm(id);
   }
 
+  // Redireccion a la vista de crear nota
   irInicio(): void {
     this.router.navigateByUrl('/tabs/tab1');
   }
 
+  // Refresco de la lista
   doRefresh(event): void {
     this.listadoPanel = [];
     console.log('Cargando notas');
