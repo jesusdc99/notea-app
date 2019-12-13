@@ -8,15 +8,17 @@ import { AuthenticationserviceService } from './authenticationservice.service';
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(private auth: AuthenticationserviceService, private router: Router,
-    private authFirebase: AuthFirebaseService) { }
+  constructor(
+    private router: Router,
+    private authFirebase: AuthFirebaseService
+    ) { }
 
   canActivate(): boolean {
     let value = this.authFirebase.isAuthenticated();
     if (!value) {
       // initially was just redirecting here, but following the
       // documentation I updated code to return a UrlTree
-      this.router.navigateByUrl("/login-firebase", { skipLocationChange: true })
+      this.router.navigateByUrl('/login', { skipLocationChange: true })
 
       //return this.router.parseUrl("/login");
     }

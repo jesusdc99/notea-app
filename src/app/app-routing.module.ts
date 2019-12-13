@@ -9,15 +9,15 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'login',
+    path: 'login-old',
     loadChildren: () => import('./public/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'login-firebase',
+    path: 'login',
     loadChildren: () => import('./public/login-firebase/login-firebase.module').then( m => m.LoginFirebasePageModule)
   },
   {
-    path: 'register-firebase',
+    path: 'register',
     loadChildren: () => import('./public/register-firebase/register-firebase.module').then( m => m.RegisterFirebasePageModule)
   }
 ];

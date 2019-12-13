@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { AuthFirebaseService } from './../../services/auth-firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register-firebase',
@@ -11,8 +11,8 @@ import { NavController } from '@ionic/angular';
 export class RegisterFirebasePage implements OnInit {
 
   public validations_form: FormGroup;
-  errorMessage: string = '';
-  successMessage: string = '';
+  public errorMessage: string = '';
+  public successMessage: string = '';
 
   validation_messages = {
     'email': [
@@ -26,9 +26,9 @@ export class RegisterFirebasePage implements OnInit {
   };
 
   constructor(
-    private navCtrl: NavController,
     private authService: AuthFirebaseService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -58,7 +58,7 @@ export class RegisterFirebasePage implements OnInit {
   }
 
   goLoginPage() {
-    this.navCtrl.navigateBack('');
+    this.router.navigateByUrl('/login');
   }
 
 }

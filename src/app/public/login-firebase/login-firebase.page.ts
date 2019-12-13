@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { AuthFirebaseService } from './../../services/auth-firebase.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login-firebase',
@@ -9,16 +9,15 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login-firebase.page.scss'],
 })
 export class LoginFirebasePage implements OnInit {
+  // basado en https://www.freakyjolly.com/ionic-4-firebase-login-registration-by-email-and-password/
 
-  validations_form: FormGroup;
-  errorMessage: string = '';
+  public validations_form: FormGroup;
+  public errorMessage: string = '';
 
   constructor(
-
-    private navCtrl: NavController,
     private authService: AuthFirebaseService,
-    private formBuilder: FormBuilder
-
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,12 +37,12 @@ export class LoginFirebasePage implements OnInit {
 
   validation_messages = {
     'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' }
+      { type: 'required', message: 'Email es obligatorio.' },
+      { type: 'pattern', message: 'Introduce un email válido.' }
     ],
     'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+      { type: 'required', message: 'Contraseña es obligatoria.' },
+      { type: 'minlength', message: 'La contaseña debe tener al menos 5 caracteres.' }
     ]
   };
 
@@ -53,13 +52,13 @@ export class LoginFirebasePage implements OnInit {
       .then(res => {
         console.log(res);
         this.errorMessage = "";
-        this.navCtrl.navigateForward('/tabs/tab1');
+        this.router.navigateByUrl('/tabs/tab1');
       }, err => {
         this.errorMessage = err.message;
       })
   }
 
   goToRegisterPage() {
-    this.navCtrl.navigateForward('/register-firebase');
+    this.router.navigateByUrl('/register');
   }
 }
