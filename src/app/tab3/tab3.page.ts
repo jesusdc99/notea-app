@@ -48,7 +48,7 @@ export class Tab3Page {
     },
   ];
 
-  public weather: Object;
+  public weather: any;
   private location_id: string;
 
   constructor(private weatherS: WeatherserviceService,
