@@ -1,3 +1,4 @@
+import { AuthFirebaseService } from './services/auth-firebase.service';
 import { AuthenticationserviceService } from './services/authenticationservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
@@ -17,6 +18,7 @@ import { environment } from "src/environments/environment";
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { Flashlight } from '@ionic-native/flashlight/ngx';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,13 +32,15 @@ import { Flashlight } from '@ionic-native/flashlight/ngx';
     FormsModule,
     ReactiveFormsModule,
     PipesModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Flashlight
+    Flashlight,
+    AuthFirebaseService
   ],
   bootstrap: [AppComponent]
 })

@@ -11,6 +11,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./public/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'login-firebase',
+    loadChildren: () => import('./public/login-firebase/login-firebase.module').then( m => m.LoginFirebasePageModule)
+  },
+  {
+    path: 'register-firebase',
+    loadChildren: () => import('./public/register-firebase/register-firebase.module').then( m => m.RegisterFirebasePageModule)
   }
 ];
 @NgModule({

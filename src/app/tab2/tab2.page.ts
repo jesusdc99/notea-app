@@ -1,3 +1,4 @@
+import { AuthFirebaseService } from './../services/auth-firebase.service';
 import { LoadingserviceService } from './../services/loadingservice.service';
 import { ToastserviceService } from './../services/toastservice.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
@@ -21,7 +22,7 @@ export class Tab2Page {
   constructor(private todoS: TodoserviceService,
     private router: Router,
     private alertController: AlertController,
-    public auth: AuthenticationserviceService,
+    public auth: AuthFirebaseService,
     private toastS: ToastserviceService,
     private loadingS: LoadingserviceService) { }
 

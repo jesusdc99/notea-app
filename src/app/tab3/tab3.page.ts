@@ -1,3 +1,4 @@
+import { AuthFirebaseService } from './../services/auth-firebase.service';
 import { AuthenticationserviceService } from './../services/authenticationservice.service';
 import { WeatherserviceService } from './../services/weatherservice.service';
 import { Component } from '@angular/core';
@@ -52,7 +53,7 @@ export class Tab3Page {
   private location_id: string;
 
   constructor(private weatherS: WeatherserviceService,
-    public auth: AuthenticationserviceService) { }
+    public auth: AuthFirebaseService) { }
 
   readWeather(): void {
     this.weatherS.getWeather(this.location_id)
