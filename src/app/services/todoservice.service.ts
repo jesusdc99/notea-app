@@ -38,7 +38,7 @@ export class TodoserviceService {
   }
 
   // Creando un observable
-  readTODO2(timer: number = 10000,): Observable<note[]> {
+  readTODO2(timer: number = 10000): Observable<note[]> {
     return new Observable((observer) => {
       // observer.next // Devolver valor
       // observer.error() // Devolver error
@@ -71,7 +71,7 @@ export class TodoserviceService {
   /**
    * TAREA: read note where...
    */
-   //Notas que el titulo sea compra
-  readTODOByCriteria(){}
+  //Notas que el titulo sea compra
+  readTODOByCriteria() { }
 
 }
